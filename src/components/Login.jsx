@@ -29,7 +29,6 @@ const Login = () => {
     }
     
   }
-
   return (
     <div className="flex justify-center py-6">
       <div className="card card-border bg-base-300 w-96">
