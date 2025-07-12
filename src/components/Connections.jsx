@@ -10,6 +10,7 @@ const Connections = () => {
     const dispatch=useDispatch()
 
   const getAllConnections=async()=>{
+    //if(connections) return;
     try{
         const res=await axios.get(BASE_URL+"/user/connections",{withCredentials:true})
         dispatch(addConnections(res.data))
@@ -22,8 +23,9 @@ const Connections = () => {
   
   useEffect(()=>{
     getAllConnections()
-  },[])  
-  if(!connections) return;
+  },[])
+
+  if(!connections) return <h1 className='flex justify-center my-10'>No connections found</h1>;
   return (
     <div>
       <div className=''>
@@ -39,7 +41,7 @@ const Connections = () => {
               <img className='rounded-full' src={photoUrl}/>
             </div>
             <div className='m-3'>
-              <h1>{firstName+" "+lastName}</h1>
+              <h1 className='font-bold'>{firstName+" "+lastName}</h1>
               {age&&gender&& <p>{age+", "+gender}</p>}
               <p>{about}</p>
             </div>

@@ -9,6 +9,8 @@ const Feed = () => {
   const feedData=useSelector(store=>store.feed)
   const dispatch=useDispatch()
 
+  
+
   const getFeed=async ()=>{
     if(feedData) return;
     try{
@@ -23,6 +25,9 @@ const Feed = () => {
   useEffect(()=>{
     getFeed()
   },[])
+
+  if(!feedData) return;
+  if(feedData.length<=0) return <h1 className='flex justify-center my-10'>No more users found</h1>
 
   return feedData&& (
     <div className='flex justify-center'>
